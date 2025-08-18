@@ -6,13 +6,13 @@ extension Gap on num {
   SizedBox get w => SizedBox(width: toDouble());
 }
 extension NavigationExtension on BuildContext {
-  Future<T?> showMyDialog<T>(
-      {required Widget child, bool isDismissible = true}) {
-    return showDialog<T>(
-        context: this,
-        builder: (context) => child,
-        barrierDismissible: isDismissible);
-  }
+  // Future<T?> showMyDialog<T>(
+  //     {required Widget child, bool isDismissible = true}) {
+  //   return showDialog<T>(
+  //       context: this,
+  //       builder: (context) => child,
+  //       barrierDismissible: isDismissible);
+  // }
 
   void showSuccessSnackBar(Widget child,
       {bool? isDismissible, Duration? duration}) {
