@@ -57,7 +57,7 @@ class AppButton extends StatelessWidget {
                 width: 20,
                 child: CircularProgressIndicator(
                   valueColor:
-                  AlwaysStoppedAnimation<Color>(AppColors.primary),
+                  AlwaysStoppedAnimation<Color>(Colors.yellowAccent),
                 ),
               )
           ],

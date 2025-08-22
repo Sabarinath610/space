@@ -5,12 +5,12 @@ import 'app_typography.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: AppColors.primary,
+    primaryColor: AppColors.primaryColor,
 
   );
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: AppColors.primary,
+    primaryColor: AppColors.primaryColor,
   );
 }
