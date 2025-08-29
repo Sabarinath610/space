@@ -1,5 +1,6 @@
-class AppAssets {
-  AppAssets._();
+class AppIcons {
+  static const String _basePath = 'assets/images';
 
-  static const logo = 'assets/logo.png';
+  static const String appLogo = '$_basePath/app_logo.svg';
+
 }

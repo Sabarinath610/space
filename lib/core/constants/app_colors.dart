@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color primaryColor = HexColor('#007BA7');
+  static Color primaryColor = HexColor('#F1B90C');
+  
 
 
   /// Custom HexColor parser
+  // ignore: non_constant_identifier_names
   static Color HexColor(String hexCode) {
     hexCode = hexCode.replaceAll('#', '');
     if (hexCode.length == 6) {

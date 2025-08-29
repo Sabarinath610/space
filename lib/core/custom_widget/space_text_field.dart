@@ -1,26 +1,45 @@
 import 'package:flutter/material.dart';
 
-class AppTextField extends StatelessWidget {
-  final String hint;
-  final TextEditingController controller;
+class SpaceTextField extends StatelessWidget {
+  final String hintText;
   final bool obscureText;
+  final TextEditingController? controller;
+  final TextInputType keyboardType;
 
-  const AppTextField({
+  const SpaceTextField({
     super.key,
-    required this.hint,
-    required this.controller,
+    required this.hintText,
     this.obscureText = false,
+    this.controller,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      obscureText: obscureText,
-      decoration: InputDecoration(
-        hintText: hint,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    return SizedBox(
+      height: 50, // fixed height for consistency
+      child: TextField(
+        controller: controller,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
+        style: const TextStyle(color: Colors.white),
+        textAlignVertical: TextAlignVertical.center, // 👈 ensures text aligns center
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: const TextStyle(color: Colors.white54),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.amber, width: 1.2),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.amber, width: 1.5),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 0, // 👈 removes extra vertical padding
+          ),
+        ),
       ),
     );
   }

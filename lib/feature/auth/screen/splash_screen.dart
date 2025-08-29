@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:space/core/constants/app_images.dart';
+import 'package:go_router/go_router.dart';
+import 'package:space/core/custom_widget/space_text.dart';
 import 'package:space/core/extensions/widget_extensions.dart';
-import 'package:space/core/helper/svg_image_helper.dart';
+import 'package:space/core/router/router_name.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -9,33 +10,46 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // Background color
+      backgroundColor:const Color(0xFF1E1E1E), // Background color
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo 
-              svgImageAssets(
-              image:SpaceImages.spaceLogo,
-              height: 258,
-              width: 168,
-            ),
-
-              20.h,
-
-              // App Name
-              const Text(
-                "SPACE",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.amber,
-                  letterSpacing: 3,
-                ),
+              // Logo
+              Image.asset(
+                "assets/images/space_log.png",
+                height: 200,
+                width: 333,
               ),
 
-              const SizedBox(height: 150),
+              // SvgPicture.asset(
+              //   "assets/images/app_logo.svg",
+              //   width: 150,
+              //   height: 150,
+              // ),
+              20.h,
+              customText(
+                "SPACE",
+                fontSize: 30,
+                // textColor: AppColors.primaryColor,
+                 textColor: Colors.amber,
+                fontWeight:FontWeight.bold,
+                letterSpacing: 3,
+              ),
+
+              // // App Name
+              // const Text(
+              //   "SPACE",
+              //   style: TextStyle(
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //     color: Colors.amber,
+              //     letterSpacing: 3,
+              //   ),
+              // ),
+
+              const SizedBox(height: 214),
 
               // Get Started Button
               SizedBox(
@@ -50,12 +64,8 @@ class SplashScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     // Navigate to next screen
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NextScreen(), // Replace with your next screen
-                      ),
-                    );
+
+                   context.pushNamed(RouteNames.LoginScreen);
                   },
                   child: const Text(
                     "Get Started",
@@ -69,23 +79,6 @@ class SplashScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-// Dummy Next Screen
-class NextScreen extends StatelessWidget {
-  const NextScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          "Welcome to Next Screen",
-          style: TextStyle(fontSize: 20),
         ),
       ),
     );
