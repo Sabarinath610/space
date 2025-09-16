@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:space/core/custom_widget/space_button.dart';
-import 'package:space/core/custom_widget/space_text.dart';
-import 'package:space/core/custom_widget/space_text_field.dart';
+import '../../../old_core/custom_widget/space_button.dart';
+import '../../../old_core/custom_widget/space_text_field.dart';
+import '../../../old_core/router/router_name.dart';
 
-import 'package:space/core/router/router_name.dart';
 
-class CreatePasswordScreen extends StatelessWidget {
-  const CreatePasswordScreen({super.key});
+
+class UsernameScreen extends StatelessWidget {
+  const UsernameScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +32,35 @@ class CreatePasswordScreen extends StatelessWidget {
               const SizedBox(height: 40),
 
               /// Title
-              customText("Create Password",
+              const Text(
+                "Set your Username",
+                style: TextStyle(
                   fontSize: 18,
-                  textColor: Colors.white,
+                  color: Colors.white,
                   fontWeight: FontWeight.w500,
+                ),
               ),
 
               const SizedBox(height: 30),
 
             
               /// Password Field
-              const SpaceTextField(hintText: "Password", obscureText: true),
+              const SpaceTextField(hintText: "Username", obscureText: true),
+
+
+              /// Forgot Password
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    context.pushNamed(RouteNames.CreatePasswordScreen);
+                  },
+                  child: const Text(
+                    "Check Availability",
+                    style: TextStyle(color: Colors.amber, fontSize: 12),
+                  ),
+                ),
+              ),
 
               const SizedBox(height: 20),
 
@@ -50,7 +68,7 @@ class CreatePasswordScreen extends StatelessWidget {
               SpaceButton(
                 text: "Next",
                 onPressed: () {
-                  context.pushNamed(RouteNames.EnterOtpScreen); // navigate further
+                  context.pushNamed(RouteNames.CreatePasswordScreen); // navigate further
                 },
               ),
             ],

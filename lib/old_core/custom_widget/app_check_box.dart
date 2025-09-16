@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:space/core/custom_widget/app_text.dart';
-import 'package:space/core/extensions/widget_extensions.dart';
+import 'package:space/old_core/extensions/widget_extensions.dart';
+
+import 'app_text.dart';
+
 class AppCheckBox extends StatelessWidget {
   final bool value;
   final ValueChanged<bool?> onChanged;

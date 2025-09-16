@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:space/core/constants/app_colors.dart';
-import 'package:space/core/custom_widget/space_button.dart';
-import 'package:space/core/custom_widget/space_text.dart';
-import 'package:space/core/extensions/widget_extensions.dart';
+import 'package:space/old_core/extensions/widget_extensions.dart';
+
+
+import '../../../old_core/constants/app_colors.dart';
+import '../../../old_core/custom_widget/space_button.dart';
+import '../../../old_core/custom_widget/space_text.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});

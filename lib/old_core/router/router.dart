@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:space/core/router/router_name.dart';
-import 'package:space/feature/auth/screen/create_password_screen.dart';
-import 'package:space/feature/auth/screen/enter_otp_screen.dart';
-import 'package:space/feature/auth/screen/login.dart';
-import 'package:space/feature/auth/screen/setusername_screen.dart';
-import 'package:space/feature/auth/screen/signup_screen.dart';
-import 'package:space/feature/auth/screen/splash_screen.dart';
+import 'package:space/old_core/router/router_name.dart';
+
+import '../../old_feature/auth/screen/create_password_screen.dart';
+import '../../old_feature/auth/screen/enter_otp_screen.dart';
+import '../../old_feature/auth/screen/login.dart';
+import '../../old_feature/auth/screen/setusername_screen.dart';
+import '../../old_feature/auth/screen/signup_screen.dart';
+import '../../old_feature/auth/screen/splash_screen.dart';
 
 /// Router configuration
 final router = GoRouter(

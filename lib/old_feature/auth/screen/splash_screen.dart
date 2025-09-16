@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:space/core/custom_widget/space_text.dart';
-import 'package:space/core/extensions/widget_extensions.dart';
-import 'package:space/core/router/router_name.dart';
+import 'package:space/old_core/extensions/widget_extensions.dart';
+
+
+import '../../../old_core/custom_widget/space_text.dart';
+import '../../../old_core/router/router_name.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

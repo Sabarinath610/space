@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:space/core/constants/app_colors.dart';
-import 'package:space/core/custom_widget/space_button.dart';
-import 'package:space/core/custom_widget/space_text.dart';
-import 'package:space/core/custom_widget/space_text_field.dart';
-import 'package:space/core/extensions/widget_extensions.dart';
-import 'package:space/core/router/router_name.dart';
+import 'package:space/old_core/extensions/widget_extensions.dart';
+
+import '../../../old_core/constants/app_colors.dart';
+import '../../../old_core/custom_widget/space_button.dart';
+import '../../../old_core/custom_widget/space_text.dart';
+import '../../../old_core/custom_widget/space_text_field.dart';
+import '../../../old_core/router/router_name.dart';
+
 
 
 // class LoginScreen extends StatelessWidget {
