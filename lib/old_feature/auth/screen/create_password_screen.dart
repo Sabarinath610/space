@@ -6,8 +6,6 @@ import '../../../old_core/custom_widget/space_text.dart';
 import '../../../old_core/custom_widget/space_text_field.dart';
 import '../../../old_core/router/router_name.dart';
 
-
-
 class CreatePasswordScreen extends StatelessWidget {
   const CreatePasswordScreen({super.key});
 
@@ -33,15 +31,15 @@ class CreatePasswordScreen extends StatelessWidget {
               const SizedBox(height: 40),
 
               /// Title
-              customText("Create Password",
-                  fontSize: 18,
-                  textColor: Colors.white,
-                  fontWeight: FontWeight.w500,
+              customText(
+                "Create Password",
+                fontSize: 18,
+                textColor: Colors.white,
+                fontWeight: FontWeight.w500,
               ),
 
               const SizedBox(height: 30),
 
-            
               /// Password Field
               const SpaceTextField(hintText: "Password", obscureText: true),
 
@@ -51,7 +49,9 @@ class CreatePasswordScreen extends StatelessWidget {
               SpaceButton(
                 text: "Next",
                 onPressed: () {
-                  context.pushNamed(RouteNames.EnterOtpScreen); // navigate further
+                  context.pushNamed(
+                    RouteNames.EnterOtpScreen,
+                  ); // navigate further
                 },
               ),
             ],

@@ -18,12 +18,13 @@ class AppButton extends StatelessWidget {
     this.leading,
     this.height = 48,
     this.fullWidth = true,
-  })  : assert(label != null || child != null, '');
+  }) : assert(label != null || child != null, '');
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final content = child ??
+    final content =
+        child ??
         Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +48,16 @@ class AppButton extends StatelessWidget {
           textStyle: theme.textTheme.labelLarge,
         ),
         child: isLoading
-            ? SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, valueColor: AlwaysStoppedAnimation(theme.colorScheme.onPrimary)))
+            ? SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  valueColor: AlwaysStoppedAnimation(
+                    theme.colorScheme.onPrimary,
+                  ),
+                ),
+              )
             : content,
       ),
     );

@@ -8,8 +8,6 @@ import '../../../old_core/custom_widget/space_text.dart';
 import '../../../old_core/custom_widget/space_text_field.dart';
 import '../../../old_core/router/router_name.dart';
 
-
-
 // class LoginScreen extends StatelessWidget {
 //   const LoginScreen({super.key});
 
@@ -89,7 +87,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 60),
 
-             Image.asset(
+              Image.asset(
                 "assets/images/space_log.png",
                 height: 200,
                 width: 333,
@@ -147,7 +145,7 @@ class LoginScreen extends StatelessWidget {
               /// Divider with text
               Row(
                 children: [
-                  Expanded(child: Divider(color: AppColors.primaryColor,)),
+                  Expanded(child: Divider(color: AppColors.primaryColor)),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
                     child: Text(
@@ -168,7 +166,7 @@ class LoginScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.amber),
                   borderRadius: BorderRadius.circular(6),
-                  color:const Color(0xFF1E1E1E),
+                  color: const Color(0xFF1E1E1E),
                 ),
                 child: Center(
                   child: Image.network(
@@ -179,27 +177,27 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
 
-             5.h,
+              5.h,
+
               /// Sign Up link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   customText(
+                  customText(
                     "Don’t have an account?",
-                   textColor: Colors.white54,
-                   fontSize: 12,
-                   fontWeight: FontWeight.w400
+                    textColor: Colors.white54,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
                   ),
                   TextButton(
                     onPressed: () {
                       context.pushNamed(RouteNames.SignUpScreen);
-
                     },
-                    child:  customText(
+                    child: customText(
                       "Sign Up",
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                     textColor: Colors.amber,
+                      textColor: Colors.amber,
                     ),
                   ),
                 ],

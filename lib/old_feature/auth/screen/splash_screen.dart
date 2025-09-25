@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:space/old_core/extensions/widget_extensions.dart';
 
-
 import '../../../old_core/custom_widget/space_text.dart';
 import '../../../old_core/router/router_name.dart';
 
@@ -12,7 +11,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xFF1E1E1E), // Background color
+      backgroundColor: const Color(0xFF1E1E1E), // Background color
       body: SafeArea(
         child: Center(
           child: Column(
@@ -35,8 +34,8 @@ class SplashScreen extends StatelessWidget {
                 "SPACE",
                 fontSize: 30,
                 // textColor: AppColors.primaryColor,
-                 textColor: Colors.amber,
-                fontWeight:FontWeight.bold,
+                textColor: Colors.amber,
+                fontWeight: FontWeight.bold,
                 letterSpacing: 3,
               ),
 
@@ -50,7 +49,6 @@ class SplashScreen extends StatelessWidget {
               //     letterSpacing: 3,
               //   ),
               // ),
-
               const SizedBox(height: 214),
 
               // Get Started Button
@@ -67,7 +65,7 @@ class SplashScreen extends StatelessWidget {
                   onPressed: () {
                     // Navigate to next screen
 
-                   context.pushNamed(RouteNames.LoginScreen);
+                    context.pushNamed(RouteNames.LoginScreen);
                   },
                   child: const Text(
                     "Get Started",

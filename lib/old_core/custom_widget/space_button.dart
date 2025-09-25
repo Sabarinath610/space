@@ -4,11 +4,7 @@ class SpaceButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  const SpaceButton({
-    super.key,
-    required this.text,
-    required this.onPressed,
-  });
+  const SpaceButton({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +14,7 @@ class SpaceButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.amber,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         ),
         onPressed: onPressed,
         child: Text(

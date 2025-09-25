@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-SvgPicture svgImageAssets(String appLogo, {
+SvgPicture svgImageAssets(
+  String appLogo, {
   String? image,
   String? label,
   double? width,
@@ -15,6 +16,6 @@ SvgPicture svgImageAssets(String appLogo, {
     width: width,
     semanticsLabel: label,
     fit: BoxFit.contain,
-    clipBehavior: clip??Clip.hardEdge,
+    clipBehavior: clip ?? Clip.hardEdge,
   );
 }

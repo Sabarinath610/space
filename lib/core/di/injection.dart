@@ -14,7 +14,6 @@ import '../../features/auth/data/datasources/auth_remote_datasource.dart';
 import '../../features/auth/data/repositories/auth_repository_impl.dart';
 import '../../features/auth/domain/usecases/login_usecase.dart';
 
-
 final sl = GetIt.instance;
 
 Future<void> init({required String baseUrl}) async {
@@ -37,8 +36,12 @@ Future<void> init({required String baseUrl}) async {
   });
 
   // Feature
-  sl.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl(dio: sl()));
-  sl.registerLazySingleton<AuthRepositoryInterface>(() => AuthRepositoryImpl(remote: sl()));
+  sl.registerLazySingleton<AuthRemoteDataSource>(
+    () => AuthRemoteDataSourceImpl(dio: sl()),
+  );
+  sl.registerLazySingleton<AuthRepositoryInterface>(
+    () => AuthRepositoryImpl(remote: sl()),
+  );
   sl.registerLazySingleton(() => AuthRepositoryImpl(remote: sl()));
   sl.registerLazySingleton(() => LoginUseCase(repository: sl()));
   sl.registerFactory(() => AuthBloc(loginUseCase: sl(), repo: sl()));

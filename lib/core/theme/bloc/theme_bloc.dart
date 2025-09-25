@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -28,18 +27,25 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   }
 
   Future<void> _onToggle(ToggleTheme _, Emitter<ThemeState> emit) async {
-    final next = state.mode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    final next = state.mode == ThemeMode.light
+        ? ThemeMode.dark
+        : ThemeMode.light;
     emit(ThemeState(next));
     await prefs.setString(_kKey, _toString(next));
   }
 
   ThemeMode _fromString(String? s) {
     switch (s) {
-      case 'light': return ThemeMode.light;
-      case 'dark': return ThemeMode.dark;
-      default: return ThemeMode.system;
+      case 'light':
+        return ThemeMode.light;
+      case 'dark':
+        return ThemeMode.dark;
+      default:
+        return ThemeMode.system;
     }
   }
 
-  String _toString(ThemeMode m) => m == ThemeMode.light ? 'light' : (m == ThemeMode.dark ? 'dark' : 'system');
+  String _toString(ThemeMode m) => m == ThemeMode.light
+      ? 'light'
+      : (m == ThemeMode.dark ? 'dark' : 'system');
 }

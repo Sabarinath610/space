@@ -8,7 +8,6 @@ import '../../../old_core/custom_widget/space_text.dart';
 import '../../../old_core/custom_widget/space_text_field.dart';
 import '../../../old_core/router/router_name.dart';
 
-
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
@@ -83,7 +82,7 @@ class SignUpScreen extends StatelessWidget {
               SpaceButton(
                 text: "Next",
                 onPressed: () {
-                 context.pushNamed(RouteNames.SetUserNameScreen);
+                  context.pushNamed(RouteNames.SetUserNameScreen);
                 },
               ),
 

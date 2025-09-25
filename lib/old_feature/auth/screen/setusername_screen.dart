@@ -5,8 +5,6 @@ import '../../../old_core/custom_widget/space_button.dart';
 import '../../../old_core/custom_widget/space_text_field.dart';
 import '../../../old_core/router/router_name.dart';
 
-
-
 class UsernameScreen extends StatelessWidget {
   const UsernameScreen({super.key});
 
@@ -43,10 +41,8 @@ class UsernameScreen extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-            
               /// Password Field
               const SpaceTextField(hintText: "Username", obscureText: true),
-
 
               /// Forgot Password
               Align(
@@ -68,7 +64,9 @@ class UsernameScreen extends StatelessWidget {
               SpaceButton(
                 text: "Next",
                 onPressed: () {
-                  context.pushNamed(RouteNames.CreatePasswordScreen); // navigate further
+                  context.pushNamed(
+                    RouteNames.CreatePasswordScreen,
+                  ); // navigate further
                 },
               ),
             ],

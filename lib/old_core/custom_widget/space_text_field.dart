@@ -23,7 +23,8 @@ class SpaceTextField extends StatelessWidget {
         obscureText: obscureText,
         keyboardType: keyboardType,
         style: const TextStyle(color: Colors.white),
-        textAlignVertical: TextAlignVertical.center, // 👈 ensures text aligns center
+        textAlignVertical:
+            TextAlignVertical.center, // 👈 ensures text aligns center
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(color: Colors.white54),

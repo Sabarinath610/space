@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space/old_core/extensions/widget_extensions.dart';
 
-
 import '../../../old_core/constants/app_colors.dart';
 import '../../../old_core/custom_widget/space_button.dart';
 import '../../../old_core/custom_widget/space_text.dart';
@@ -58,7 +57,10 @@ class OtpScreen extends StatelessWidget {
                           borderSide: BorderSide(color: AppColors.primaryColor),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
+                          borderSide: BorderSide(
+                            color: AppColors.primaryColor,
+                            width: 2,
+                          ),
                         ),
                       ),
                     ),
@@ -73,11 +75,11 @@ class OtpScreen extends StatelessWidget {
                 text: "Done",
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Wait until next screen designed 😎"),
-        duration: Duration(seconds: 2), // How long it stays
-      ),
-    );
+                    const SnackBar(
+                      content: Text("Wait until next screen designed 😎"),
+                      duration: Duration(seconds: 2), // How long it stays
+                    ),
+                  );
                 },
               ),
 

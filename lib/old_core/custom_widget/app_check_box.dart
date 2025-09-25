@@ -11,7 +11,8 @@ class AppCheckBox extends StatelessWidget {
   final Color inactiveColor;
   final TextStyle? textStyle;
 
-  const AppCheckBox({super.key,
+  const AppCheckBox({
+    super.key,
     required this.value,
     required this.onChanged,
     required this.label,
@@ -40,19 +41,19 @@ class AppCheckBox extends StatelessWidget {
             ),
             child: value
                 ? Center(
-              child: Container(
-                height: 12.0,
-                width: 12.0,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: activeColor,
-                ),
-              ),
-            )
+                    child: Container(
+                      height: 12.0,
+                      width: 12.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: activeColor,
+                      ),
+                    ),
+                  )
                 : null,
           ),
           12.w,
-          appText(label,textColor: value ? activeColor : inactiveColor),
+          appText(label, textColor: value ? activeColor : inactiveColor),
         ],
       ),
     );

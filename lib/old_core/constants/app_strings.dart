@@ -1,4 +1,4 @@
-class AppStrings{
+class AppStrings {
   AppStrings._();
   static const appName = 'Space';
 }

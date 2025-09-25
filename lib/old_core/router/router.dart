@@ -33,23 +33,18 @@ final router = GoRouter(
       path: Routes.SetUserNameScreen,
       builder: (context, state) => const UsernameScreen(),
     ),
-     GoRoute(
+    GoRoute(
       name: RouteNames.CreatePasswordScreen,
       path: Routes.CreatePasswordScreen,
       builder: (context, state) => const CreatePasswordScreen(),
     ),
-     GoRoute(
+    GoRoute(
       name: RouteNames.EnterOtpScreen,
       path: Routes.EnterOtpScreen,
       builder: (context, state) => const OtpScreen(),
     ),
-    
   ],
   errorBuilder: (context, state) {
-    return Scaffold(
-      body: Center(
-        child: Text('Error: ${state.error}'),
-      ),
-    );
+    return Scaffold(body: Center(child: Text('Error: ${state.error}')));
   },
 );

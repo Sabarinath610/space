@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 extension ThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
 }
+
 extension TextStyleHelper on BuildContext {
   TextStyle? get displayLarge => Theme.of(this).textTheme.displayLarge;
   TextStyle? get displayMedium => Theme.of(this).textTheme.displayMedium;
@@ -24,6 +25,7 @@ extension TextStyleHelper on BuildContext {
   TextStyle? get labelMedium => Theme.of(this).textTheme.labelMedium;
   TextStyle? get labelSmall => Theme.of(this).textTheme.labelSmall;
 }
+
 extension TextStyleModifiers on TextStyle {
   TextStyle onPrimary(BuildContext context) =>
       copyWith(color: Theme.of(context).colorScheme.onPrimary);
@@ -64,6 +66,7 @@ extension TextStyleModifiers on TextStyle {
 
   TextStyle opacity(double value) => copyWith(color: color?.withOpacity(value));
 }
+
 extension ColorHelper on BuildContext {
   Color get primary => Theme.of(this).colorScheme.primary;
   Color get onPrimary => Theme.of(this).colorScheme.onPrimary;

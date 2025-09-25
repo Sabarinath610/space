@@ -9,7 +9,6 @@ import 'core/theme/bloc/theme_bloc.dart';
 import 'core/theme/bloc/theme_state.dart';
 import 'features/auth/domain/presentation/bloc/auth_bloc.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
@@ -19,7 +18,6 @@ void main() async {
 
 class AppEntry extends StatelessWidget {
   AppEntry({super.key});
-  final _router = AppRouter().router;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +28,16 @@ class AppEntry extends StatelessWidget {
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, themeState) {
+          final authBloc = context.read<AuthBloc>();
+          final router = AppRouter(authBloc).router;
           return MaterialApp.router(
-            title: 'CleanApp',
+            title: 'Space App',
             themeMode: themeState.mode,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            routerDelegate: _router.routerDelegate,
-            routeInformationParser: _router.routeInformationParser,
-            routeInformationProvider: _router.routeInformationProvider,
+            routerDelegate: router.routerDelegate,
+            routeInformationParser: router.routeInformationParser,
+            routeInformationProvider: router.routeInformationProvider,
           );
         },
       ),
