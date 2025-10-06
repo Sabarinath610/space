@@ -1,5 +1,6 @@
-// FILE: lib/main.dart
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/di/injection.dart' as di;
 import 'core/bloc_observer.dart';
@@ -17,7 +18,7 @@ void main() async {
 }
 
 class AppEntry extends StatelessWidget {
-  AppEntry({super.key});
+  const AppEntry({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,24 @@ class AppEntry extends StatelessWidget {
         builder: (context, themeState) {
           final authBloc = context.read<AuthBloc>();
           final router = AppRouter(authBloc).router;
+          final brightness = themeState.mode == ThemeMode.dark
+              ? Brightness.dark
+              : (themeState.mode == ThemeMode.light
+              ? Brightness.light
+              : MediaQueryData.fromView(WidgetsBinding.instance.window)
+              .platformBrightness);
+          final isDark = brightness == Brightness.dark;
+          SystemChrome.setSystemUIOverlayStyle(
+            SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness:
+              isDark ? Brightness.light : Brightness.dark,
+              systemNavigationBarColor:
+              isDark ? Colors.black : Colors.white,
+              systemNavigationBarIconBrightness:
+              isDark ? Brightness.light : Brightness.dark,
+            ),
+          );
           return MaterialApp.router(
             title: 'Space App',
             themeMode: themeState.mode,

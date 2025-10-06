@@ -1,47 +1,47 @@
-import 'dart:async';
 
+import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
 import '../../security/secure_storage.dart';
 
 class AuthInterceptor extends Interceptor {
-  final SecureStorage _secure = GetIt.I<SecureStorage>();
-  final Dio _dio = GetIt.I<Dio>();
+  final SecureStorage? secureStorage;
+  final Dio dio;
 
   bool _refreshing = false;
   final List<PendingRequest> _queue = [];
 
+  AuthInterceptor({required this.secureStorage, required this.dio});
+
   @override
-  void onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
-    final token = await _secure.read('access_token');
-    if (token != null && token.isNotEmpty)
-      options.headers['Authorization'] = 'Bearer $token';
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+    try {
+      final token = await secureStorage?.read('access_token');
+      if (token != null && token.isNotEmpty) {
+        options.headers['Authorization'] = 'Bearer $token';
+      }
+    } catch (e) {
+      // Fail safe - don't block requests due to storage errors
+    }
     handler.next(options);
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    // If 401, attempt refresh
+    // If 401, attempt refresh flow
     if (err.response?.statusCode == 401) {
       final options = err.requestOptions;
-      // queue and refresh if not already refreshing
-      final completer = Completer<Response>();
+      final completer = Completer<Response<dynamic>>();
       _queue.add(PendingRequest(options, completer));
 
       if (!_refreshing) {
         _refreshing = true;
         try {
           await _handleRefresh();
-          _refreshing = false;
-          // re-run queued requests
+          // Replay queued requests
           for (var req in _queue) {
-            final newToken = await _secure.read('access_token');
-            if (newToken != null)
-              req.options.headers['Authorization'] = 'Bearer $newToken';
-            final response = await _dio.fetch(req.options);
+            final newToken = await secureStorage?.read('access_token');
+            if (newToken != null) req.options.headers['Authorization'] = 'Bearer $newToken';
+            final response = await dio.fetch(req.options);
             req.completer.complete(response);
           }
         } catch (e) {
@@ -54,7 +54,7 @@ class AuthInterceptor extends Interceptor {
         }
       }
 
-      // return the future of the queued request
+      // Return queued future result to original requestor
       try {
         final r = await completer.future;
         handler.resolve(r);
@@ -65,27 +65,24 @@ class AuthInterceptor extends Interceptor {
       }
     }
 
-    handler.next(err);
+    handler.next(err); // default pass-through
   }
 
   Future<void> _handleRefresh() async {
-    final refreshToken = await _secure.read('refresh_token');
+    final refreshToken = await secureStorage?.read('refresh_token');
     if (refreshToken == null) throw Exception('No refresh token');
 
-    // call refresh endpoint
-    final resp = await _dio.post(
-      '/auth/refresh',
-      data: {'refresh_token': refreshToken},
-    );
+    // Ensure '/auth/refresh' path is correct for your API.
+    final resp = await dio.post('/auth/refresh', data: {'refresh_token': refreshToken});
     final newAccess = resp.data['access_token'];
     final newRefresh = resp.data['refresh_token'];
-    await _secure.write('access_token', newAccess);
-    if (newRefresh != null) await _secure.write('refresh_token', newRefresh);
+    if (newAccess != null) await secureStorage?.write('access_token', newAccess);
+    if (newRefresh != null) await secureStorage?.write('refresh_token', newRefresh);
   }
 }
 
 class PendingRequest {
   final RequestOptions options;
-  final Completer<Response> completer;
+  final Completer<Response<dynamic>> completer;
   PendingRequest(this.options, this.completer);
 }

@@ -11,12 +11,12 @@ class AppRouter {
   late final GoRouter router;
   AppRouter(AuthBloc authBloc) {
     router = GoRouter(
-      initialLocation: '/login',
+      initialLocation: '/home',
       refreshListenable: GoRouterRefreshStream(authBloc.stream),
       redirect: (context, state) {
         final isLoggedIn = authBloc.state is AuthAuthenticated;
-        final loggingIn = state.path == '/login';
-        if (!isLoggedIn && !loggingIn) return '/login';
+        final loggingIn = state.path == '/home';
+        if (!isLoggedIn && !loggingIn) return '/home';
         if (isLoggedIn && loggingIn) return '/home';
         return null;
       },
